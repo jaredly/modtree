@@ -1,0 +1,33 @@
+{
+  "name": "modtree",
+  "version": "0.0.0",
+  "description": "Draw a tree of module dependencies.",
+  "main": "index.js",
+  "bin": "./bin.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jaredly/modtree.git"
+  },
+  "keywords": [
+    "browserify",
+    "tree",
+    "draw",
+    "graph",
+    "viz"
+  ],
+  "author": "Jared Forsyth (jared@jaredforsyth.com)",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/jaredly/modtree/issues"
+  },
+  "dependencies": {
+    "through": "~2.3.4",
+    "subarg": "0.0.1",
+    "chokidar": "~0.8.2",
+    "readline": "0.0.3",
+    "module-deps": "~1.10.0"
+  }
+}
