@@ -1,6 +1,7 @@
 
 .mod-html {
   font-family: sans-serif;
+  padding: 5px 6px;
 }
 
 .mod-html_row {
@@ -20,11 +21,28 @@
 .mod-html_comp {
   margin: 5px;
   border: @comp-border solid #ccc;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-width: 100px;
-  cursor: pointer;
   background-color: white;
+  cursor: default;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.mod-html_comp--routeless {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.mod-html_comp--clickable {
+  cursor: pointer;
+}
+
+.mod-html_comp_props-c {
+  flex: 1;
 }
 
 .mod-html_route-name {
@@ -44,7 +62,7 @@
 }
 
 .mod-html_comp--selected {
-  border-color: black;
+  border-color: #FF3A61;
 
   &:after {
     position: absolute;
@@ -64,18 +82,21 @@
 }
 
 .mod-html_comp_title {
-  border-bottom: 1px solid #aaa;
   padding: 5px 10px;
-}
-
-.mod-html_comp_table {
-  margin: 10px;
-  border-collapse: collapse;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
 }
 
 .mod-html_comp_extras {
-  border-top: 1px solid #aaa;
   display: flex;
+
+  div:first-child {
+    border-bottom-left-radius: 5px;
+  }
+  div:last-child {
+    border-bottom-right-radius: 5px;
+  }
 }
 
 .mod-html_comp_fixtures {
@@ -88,7 +109,7 @@
 
 .mod-html_comp_router,
 .mod-html_comp_model {
-  flex: 1;
+  flex: 5;
   padding: 3px 7px;
   min-width: 10px;
   min-height: 1em;
@@ -98,7 +119,8 @@
 }
 
 .mod-html_comp_router {
-  background-color: yellow;
+  background-color: rgb(255, 224, 0);
+  color: #505050;
 
   &:before {
     content: 'router'
@@ -107,6 +129,7 @@
 
 .mod-html_comp_model {
   background-color: orange;
+  color: white;
 
   &:before {
     content: 'model'
@@ -164,7 +187,7 @@
 }
 
 .mod-html_comp--selected .mod-html_comp_deps {
-  background-color: #00f;
+  background-color: #278DEB;
   color: white;
 }
 

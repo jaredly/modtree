@@ -28,7 +28,7 @@ for (var name in data.nodes) {
   nodes[name] = {
     deps: [],
     displayName: cc.displayName,
-    router: cp._baseroute !== undefined,
+    router: props._baseroute !== undefined,
     model: !!cp.model,
     routes: cp.routes,
     defaultProps: props,
@@ -42,5 +42,6 @@ data.links.forEach(function (link) {
 
 React.renderComponent(modtree.ModTree({
   nodes: nodes,
+  clickable: Object.keys(nodes).slice(10)
 }), document.getElementById('html'))
 
