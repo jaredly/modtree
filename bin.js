@@ -19,7 +19,7 @@ if (argv._.length !== 2 || argv.h || argv.help) {
   console.log('')
   console.log("      --once, -n   : don't watch. Just run once.")
   console.log('      -t transform : Add a transformer. Can be used multiple times')
-  console.log('      -p function  : JSONp function to call with json')
+  console.log('      -p function  : JSONp function to call with the json')
   console.log('')
   process.exit(1)
 }

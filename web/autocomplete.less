@@ -1,0 +1,43 @@
+
+.autocomplete {
+  position: relative;
+}
+
+.autocomplete_list {
+  z-index: 10;
+  display: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.autocomplete--on .autocomplete_list {
+  display: block;
+}
+
+.autocomplete_item {
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eef;
+  }
+}
+
+.autocomplete_title {
+  font-size: 14px;
+  color: #000;
+}
+
+.autocomplete_subtitle {
+  color: #999;
+  font-style: italic;
+}
+

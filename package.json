@@ -7,6 +7,7 @@
   "scripts": {
     "test": "make test"
   },
+  "browser": "web/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/jaredly/modtree.git"
@@ -29,5 +30,8 @@
     "chokidar": "~0.8.2",
     "readline": "0.0.3",
     "module-deps": "~1.10.0"
+  },
+  "devDependencies": {
+    "reactify": "~0.13.1"
   }
 }

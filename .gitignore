@@ -1,2 +1,11 @@
 *.swp
 node_modules
+example/modtree.css
+example/modtree.css.map
+example/modtree.js
+example/react-with-addons-0.10.0.js
+example/vis.css
+example/vis.js
+example/tree.js
+example/dev-bundle.js
+example/components.js
