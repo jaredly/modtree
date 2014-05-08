@@ -31,13 +31,16 @@ var ModTree = module.exports = React.createClass({
             'other': 'node_id',
           },
           defaultProps: {},
-          fixtures: {
+          fixture: {
             fixture_name: {}
           }
         }
         */
       }
     }
+  },
+  componentWillMount: function () {
+    this.timeouts = {}
   },
   getInitialState: function () {
     return {
@@ -49,6 +52,22 @@ var ModTree = module.exports = React.createClass({
     this.setState({
       showing: item.lineage
     })
+  },
+  startTimeout: function (name, lineage) {
+    this.killTimeout(name)
+    this.timeouts[name] = setTimeout(function () {
+      this.showNode({lineage: lineage})
+    }.bind(this), 200)
+  },
+  killTimeout: function (name) {
+    if (this.timeouts[name]) clearTimeout(this.timeouts[name])
+    delete this.timeouts[name]
+  },
+  onSelect: function (name, lineage) {
+    if (this.state.showing.indexOf(name) !== -1) {
+      return this.showNode(lineage)
+    }
+    this.props.onSelect(name)
   },
   compBody: function (name, isRoute, lineages) {
     var routeName = false
@@ -69,8 +88,9 @@ var ModTree = module.exports = React.createClass({
     var linup = (lineages[name] || []).concat([name])
     return (
       <div className={cls}
-           onMouseOver={selected ? false : this.showNode.bind(null, {lineage: linup})}
-           onClick={this.props.onSelect.bind(null, name)}>
+           onMouseOver={selected ? false : this.startTimeout.bind(null, name, linup)}
+           onMouseOut={this.killTimeout.bind(null, name)}
+           onClick={this.onSelect.bind(null, name, linup)}>
         {routeName}
         <div title={name} className='mod-html_comp_title'>
           {comp.displayName}
@@ -90,7 +110,7 @@ var ModTree = module.exports = React.createClass({
           }
         </table>
         <div className='mod-html_comp_extras'>
-          {comp.fixtures ? d.div({className: 'mod-html_comp_fixtures'}, Object.keys(comp.fixtures).length) : false}
+          {comp.fixture ? d.div({className: 'mod-html_comp_fixtures'}, Object.keys(comp.fixture).length) : false}
           {comp.router ? d.div({className: 'mod-html_comp_router'}) : false}
           {comp.model ? d.div({className: 'mod-html_comp_model'}) : false}
           {comp.deps.length ? d.div({className: ' mod-html_comp_deps', 'data-value': comp.deps.length}, comp.deps.length): false}

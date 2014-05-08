@@ -17,20 +17,22 @@ React.renderComponent(modtree.VisTree({
 var nodes = {}
   , comp
   , cc
+  , cp
 for (var name in data.nodes) {
   comp = components[name]
   if (!comp) continue
   cc = comp.cls.componentConstructor
   cp = cc.prototype
+  var props = cp.getDefaultProps ? cp.getDefaultProps() : {}
 
   nodes[name] = {
     deps: [],
     displayName: cc.displayName,
-    router: !!cp.routes,
+    router: cp._baseroute !== undefined,
     model: !!cp.model,
     routes: cp.routes,
-    defaultProps: cp.getDefaultProps ? cp.getDefaultProps() : {},
-    fixtures: comp.fixtures
+    defaultProps: props,
+    fixture: comp.fixtures
   }
 }
 data.links.forEach(function (link) {
